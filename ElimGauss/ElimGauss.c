@@ -22,35 +22,6 @@ int main(int argc, char *argv[]) {
 	
 	while (feof(archivo) == 0){
 		caracter = fgetc(archivo);
-		//Aqui entran para conocer numero de matrices.
-		/**if(i==0){
-			nMatrices = caracter;
-			i=1;
-			nMatrices = nMatrices - 48;
-			caracter = fgetc(archivo);
-			if(caracter!='\r'){
-				nMatricessegundo=caracter;
-				nMatricessegundo=nMatricessegundo-48;
-				nMatrices=nMatrices * 10;
-				nMatrices=nMatrices+nMatricessegundo;
-				caracter = fgetc(archivo);
-				if(caracter!='\r'){
-					nMatricestercero=caracter;
-					nMatricestercero=nMatricestercero-48;
-					nMatrices=nMatrices*10;
-					nMatrices=nMatrices+nMatricestercero;
-					caracter= fgetc(archivo);
-				}
-			}
-		}
-		*/
-		//Termina numero de matrices
-		/**if(caracter==' ' || caracter=='\r' || caracter=='\n'){
-			do{
-				caracter=fgetc(archivo);
-			} while(caracter==' ' || caracter=='\r' || caracter=='\n');
-		} */
-		//Se cuentan los caracteres para filas y columnas
 		if(caracter!='\r' && caracter!='\n' && nFilas==0){
 			nFilas=caracter;
 			nFilas=nFilas-48;
@@ -142,9 +113,6 @@ int main(int argc, char *argv[]) {
 		/**AQUI DEBE IR LA OPERACION DE GAUUSS */
 		m=0;
 		n=0;
-		//bandera=1 significa que ya se comprobo que son diferentes de 0 la diagonal
-		//bandera=0 diagonal tiene un 0
-		//z para llevar el valor de cuantos diferentes de 0 hay
 		matriz_aux = (float **) calloc(nFilas, sizeof(float *));
 		for (m= 0; m< nFilas; m++){
 			matriz_aux[m] = (float *) calloc(nColumnas, sizeof(float));
@@ -188,7 +156,6 @@ int main(int argc, char *argv[]) {
 		
 		/**EMPEZAMOS A TRANSFORMAR */
 		while(k<nFilas){
-			//ayud=matriz[k][k];
 			
 			if(matriz[k][k]!=0){
 				for(m=(k+1);m<nFilas;m++){
